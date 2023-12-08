@@ -1,8 +1,20 @@
 import { render } from "preact";
+import { signal } from "@preact/signals";
 import "./style.css";
 
+export const contador = signal(10);
+
 export function App() {
-  return <h1>Hola mundo desde Preact</h1>;
+  const incrementaContador = () => {
+    contador.value++;
+  };
+  console.log("Renderizado App")
+  return (
+    <div>
+      <h1>Hola mundo desde Preact</h1>
+      <button onClick={incrementaContador}>Contador: {contador}</button>
+    </div>
+  );
 }
 
 function Resource(props) {
